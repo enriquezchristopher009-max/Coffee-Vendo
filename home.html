@@ -1,0 +1,571 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>Home Coffee Vendo Machine</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+  
+
+  <header>
+
+    <div class="logo">
+
+      <img src="logo.png.png" alt="Logo">
+
+      Coffee Vendo
+
+    </div>
+
+
+    <nav>
+
+      <a href="home.html">Home</a>
+
+      <a href="cart.html">Products</a>
+
+      <a href="checkout.html">Checkout</a>
+
+      <a href="login.html">Login</a>
+
+
+    </nav>
+
+
+    
+  </header>
+
+
+
+ 
+
+  <main>
+
+
+    <h1>
+      Coffee Machine ☕
+    </h1>
+
+    
+    <div class="dialog">
+
+      ✅ <b>New!</b>
+
+      Coffee Vendo provides high-quality, reliable coffee machines,
+      user-friendly and premium coffee blends. We bring the cafe
+      experience right to your location fast, fresh, and affordable.
+
+    </div>
+
+    
+
+<div class="video-section">
+
+  <h2>Watch Our Coffee Vendo in Action ☕</h2>
+
+  <video
+    class="coffee-video"
+    controls
+    autoplay
+    muted
+    loop
+    playsinline
+  >
+   <source src="coffee-vendo.mp4.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <p>
+    Discover how our coffee vendo machines provide
+    fast, fresh, and affordable coffee anytime.
+  </p>
+
+</div>
+
+
+
+
+
+    
+    <div class="machine-comment-container">
+
+
+      
+      <div class="machine-side">
+
+        <h2>
+          Our Machines
+        </h2>
+
+
+        <div class="machine-slider">
+
+
+         
+          <button
+            class="arrow"
+            onclick="previousMachine()"
+            type="button"
+          >
+            ❮
+          </button>
+
+
+
+          
+
+          <div class="product-card">
+
+            <img
+              id="machine-image"
+              src="vendo.jpeg"
+              alt="ChriptoVendo"
+            >
+
+
+            <h3 id="machine-name">
+              ChriptoVendo
+            </h3>
+
+
+            <p id="machine-description">
+              Perfect for small spaces & sari-sari store
+            </p>
+
+
+            <a
+              href="cart.html"
+              class="btn"
+            >
+              VIEW
+            </a>
+
+          </div>
+
+
+
+         
+
+          <button
+            class="arrow"
+            onclick="nextMachine()"
+            type="button"
+          >
+            ❯
+          </button>
+
+
+        </div>
+
+      </div>
+      
+    </main>
+
+
+
+
+
+     
+       <div class="comment-section">
+
+
+        <h2>
+          Customer Comments 💬
+        </h2>
+
+
+       
+
+        <div class="comment-form">
+
+
+          <input
+            type="text"
+            id="comment-name"
+            placeholder="Your Name"
+          >
+
+
+          <textarea
+            id="comment-text"
+            placeholder="Write your comment..."
+            rows="4"
+          ></textarea>
+
+
+          <button
+            onclick="postComment()"
+            type="button"
+          >
+            Post Comment
+          </button>
+
+
+        </div>
+
+
+
+        <!-- COMMENTS -->
+
+        <div id="comments-list">
+
+
+          <div class="comment">
+
+            <h4>
+              Joyce S. ⭐⭐⭐⭐⭐
+            </h4>
+
+            <p>
+              Best coffee vendo in the city!
+              Good quality and user-friendly.
+            </p>
+
+          </div>
+
+
+
+          <div class="comment">
+
+            <h4>
+              Dexter D. ⭐⭐⭐⭐
+            </h4>
+
+            <p>
+              Fast service and great prices.
+              Highly recommended!
+            </p>
+
+          </div>
+
+          <div class="comment">
+
+            <h4>
+              John Mark M. ⭐⭐⭐⭐
+            </h4>
+
+            <p>
+              PALIT NAMO! SANA ALL! PAPAPDOL! AYAW KOL! BATA PAKO KOL!
+            </p>
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+  
+
+
+
+  
+
+  <footer>
+
+    &copy; 2026 Coffee Vendo |
+    Good quality & Affordable. 
+
+  </footer>
+
+
+
+  
+
+  <script>
+
+    
+
+    const machines = [
+
+      {
+        name: "ChriptoVendo",
+        image: "vendo.jpeg",
+        description: "Perfect for small spaces & sari-sari store"
+      },
+
+      {
+        name: "TophMachine",
+        image: "coin.jpeg.avif",
+        description: "Perfect for Public or School spaces"
+      },
+
+      {
+        name: "TowpeeMachine",
+        image: "companyvendo.jpeg.avif",
+        description: "Perfect for Company or Huge spaces"
+      },
+
+      {
+        name: "SpaceVendo",
+        image: "SpaceVendo.jpg",
+        description: "High-capacity 500-1000 cups a day"
+      }
+
+    ];
+
+
+    let currentMachine = 0;
+
+
+   
+
+    function showMachine() {
+
+      document.getElementById("machine-image").src =
+        machines[currentMachine].image;
+
+      document.getElementById("machine-image").alt =
+        machines[currentMachine].name;
+
+      document.getElementById("machine-name").textContent =
+        machines[currentMachine].name;
+
+      document.getElementById("machine-description").textContent =
+        machines[currentMachine].description;
+
+    }
+
+
+    
+
+    function nextMachine() {
+
+      currentMachine++;
+
+      if (currentMachine >= machines.length) {
+
+        currentMachine = 0;
+
+      }
+
+      showMachine();
+
+    }
+
+
+    
+
+    function previousMachine() {
+
+      currentMachine--;
+
+      if (currentMachine < 0) {
+
+        currentMachine = machines.length - 1;
+
+      }
+
+      showMachine();
+
+    }
+
+
+   
+
+    function searchMachine() {
+
+      const searchInput =
+        document.getElementById("searchInput");
+
+      const searchText =
+        searchInput.value.trim().toLowerCase();
+
+
+      /* EMPTY SEARCH */
+
+      if (searchText === "") {
+
+        alert("Please type a machine name.");
+
+        return;
+
+      }
+
+
+      /* FIND MACHINE */
+
+      const foundIndex =
+        machines.findIndex(function(machine) {
+
+          return (
+
+            machine.name
+              .toLowerCase()
+              .includes(searchText)
+
+            ||
+
+            machine.description
+              .toLowerCase()
+              .includes(searchText)
+
+          );
+
+        });
+
+
+      /* MACHINE FOUND */
+
+      if (foundIndex !== -1) {
+
+        currentMachine = foundIndex;
+
+        showMachine();
+
+
+        /* SCROLL TO MACHINE */
+
+        document
+          .getElementById("machine-image")
+          .scrollIntoView({
+
+            behavior: "smooth",
+
+            block: "center"
+
+          });
+
+      }
+
+
+      /* MACHINE NOT FOUND */
+
+      else {
+
+        alert(
+          'No machine found for "' +
+          searchInput.value +
+          '".'
+        );
+
+      }
+
+    }
+
+
+    
+
+    document
+      .getElementById("searchInput")
+      .addEventListener(
+        "keydown",
+        function(event) {
+
+          if (event.key === "Enter") {
+
+            searchMachine();
+
+          }
+
+        }
+      );
+
+
+   
+
+    function postComment() {
+
+      const name =
+        document
+          .getElementById("comment-name")
+          .value
+          .trim();
+
+
+      const text =
+        document
+          .getElementById("comment-text")
+          .value
+          .trim();
+
+
+      /* CHECK NAME */
+
+      if (name === "") {
+
+        alert("Please enter your name.");
+
+        return;
+
+      }
+
+
+      /* CHECK COMMENT */
+
+      if (text === "") {
+
+        alert("Please write a comment.");
+
+        return;
+
+      }
+
+
+      /* CREATE NEW COMMENT */
+
+      const newComment =
+        document.createElement("div");
+
+
+      newComment.className =
+        "comment";
+
+
+      newComment.innerHTML = `
+
+        <h4>
+          ${name} ⭐⭐⭐⭐⭐
+        </h4>
+
+        <p>
+          ${text}
+        </p>
+
+      `;
+
+
+      /* ADD COMMENT */
+
+      document
+        .getElementById("comments-list")
+        .appendChild(newComment);
+
+
+      /* CLEAR INPUTS */
+
+      document
+        .getElementById("comment-name")
+        .value = "";
+
+
+      document
+        .getElementById("comment-text")
+        .value = "";
+
+
+      alert("Comment posted successfully!");
+
+    }
+
+  </script>
+
+
+</body>
+
+</html>
+

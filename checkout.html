@@ -1,0 +1,703 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Checkout — Coffee Vendo</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+         ========================= -->
+
+    <header>
+
+        <div class="logo"> <img src="logo.png.png" alt="logo"> Coffee Vendo
+
+
+        </div>
+
+
+        <nav>
+
+            <a href="home.html">
+                Home
+            </a>
+
+            <a href="cart.html">
+                Products
+            </a>
+
+            <a href="checkout.html">
+                Checkout
+            </a>
+
+            <a href="login.html">
+                Login
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================
+         MAIN
+         ========================= -->
+
+    <main>
+
+        <h1>
+            Complete Your Order
+        </h1>
+
+
+        <!-- =========================
+             CHECKOUT TWO COLUMNS
+             ========================= -->
+
+        <div class="checkout-container">
+
+
+            <!-- =========================
+                 LEFT SIDE
+                 ORDER SUMMARY
+                 ========================= -->
+
+            <div class="checkout-left">
+
+                <div class="dialog order-summary">
+
+                    <h3>
+                        📋 Order Summary
+                    </h3>
+
+
+                    <div id="order-items">
+
+                        <!-- Products will appear here -->
+
+                    </div>
+
+
+                    <hr>
+
+
+                    <div class="order-total">
+
+                        <b>
+
+                            Total: ₱
+
+                            <span id="order-total">
+                                0
+                            </span>
+
+                        </b>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 RIGHT SIDE
+                 SHIPPING + PAYMENT
+                 ========================= -->
+
+            <div class="checkout-right">
+
+
+                <form id="checkout-form">
+
+
+                    <!-- =========================
+                         SHIPPING DETAILS
+                         ========================= -->
+
+                    <h3>
+                        🚚 Shipping Details
+                    </h3>
+
+
+                    <label>
+                        Full Name:
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="fullname"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+
+                    <label>
+                        Address / Pickup Station:
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="address"
+                        placeholder="Enter vendo location or delivery address"
+                        required
+                    >
+
+
+                    <label>
+                        Contact Number:
+                    </label>
+
+
+                    <input
+                        type="tel"
+                        id="contact"
+                        placeholder="Enter your contact number"
+                        required
+                    >
+
+
+                    <label>
+                        Email Address:
+                    </label>
+
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+
+
+                    <!-- =========================
+                         PAYMENT METHOD
+                         ========================= -->
+
+                    <h3>
+                        💳 Payment Method
+                    </h3>
+
+
+                    <div class="payment-methods">
+
+
+                        <!-- GCASH -->
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="pay"
+                                value="G-cash payment"
+                                required
+                            >
+
+
+                            <div class="payment-card">
+
+                                <div class="payment-icon">
+                                    📱
+                                </div>
+
+
+                                <div class="payment-info">
+
+                                    <strong>
+                                        GCash
+                                    </strong>
+
+                                    <small>
+                                        Pay securely using GCash
+                                    </small>
+
+                                </div>
+
+
+                                <div class="payment-check">
+                                    ✓
+                                </div>
+
+                            </div>
+
+                        </label>
+
+
+
+                        <!-- CASH ON DELIVERY -->
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="pay"
+                                value="Cash on delivery"
+                            >
+
+
+                            <div class="payment-card">
+
+                                <div class="payment-icon">
+                                    💵
+                                </div>
+
+
+                                <div class="payment-info">
+
+                                    <strong>
+                                        Cash on Delivery
+                                    </strong>
+
+                                    <small>
+                                        Pay when your order arrives
+                                    </small>
+
+                                </div>
+
+
+                                <div class="payment-check">
+                                    ✓
+                                </div>
+
+                            </div>
+
+                        </label>
+
+
+
+                        <!-- CARD PAYMENT -->
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="pay"
+                                value="Card Payment"
+                            >
+
+
+                            <div class="payment-card">
+
+                                <div class="payment-icon">
+                                    💳
+                                </div>
+
+
+                                <div class="payment-info">
+
+                                    <strong>
+                                        Card Payment
+                                    </strong>
+
+                                    <small>
+                                        Pay using your debit or credit card
+                                    </small>
+
+                                </div>
+
+
+                                <div class="payment-check">
+                                    ✓
+                                </div>
+
+                            </div>
+
+                        </label>
+
+                    </div>
+
+
+
+                    <!-- CONFIRM ORDER -->
+
+                    <button
+                        type="submit"
+                        class="confirm-order-button"
+                    >
+                        ✅ Confirm Order
+                    </button>
+
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             SUCCESS MESSAGE
+             ========================= -->
+
+        <div
+            id="success-message"
+            class="success-message"
+        >
+
+            <h2>
+                ✅ Order Confirmed!
+            </h2>
+
+
+            <p>
+
+                Thank you,
+
+                <b id="customer-name"></b>!
+
+            </p>
+
+
+            <p>
+                Your order has been successfully placed.
+            </p>
+
+
+            <p>
+                We will contact you using the information you provided.
+            </p>
+
+        </div>
+
+
+
+        <!-- =========================
+             BACK TO CART
+             ========================= -->
+
+        <div class="back-to-cart">
+
+            <a
+                href="cart.html"
+                class="btn"
+            >
+                ← Back to Cart
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+         ========================= -->
+
+    <footer>
+
+        &copy; 2026 Coffee Vendo —
+        Thank you for choosing us. 
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+         ========================= -->
+
+    <script>
+
+        // GET CART
+
+        let cart =
+            JSON.parse(
+                localStorage.getItem("cart")
+            ) || [];
+
+
+
+        // DISPLAY ORDER
+
+        function displayOrder() {
+
+            const orderItems =
+                document.getElementById(
+                    "order-items"
+                );
+
+
+            const orderTotal =
+                document.getElementById(
+                    "order-total"
+                );
+
+
+            orderItems.innerHTML = "";
+
+
+            // EMPTY CART
+
+            if (cart.length === 0) {
+
+                orderItems.innerHTML = `
+
+                    <div class="empty-cart">
+
+                        <p>
+                            🛒 Your cart is empty.
+                        </p>
+
+
+                        <a
+                            href="cart.html"
+                            class="btn"
+                        >
+                            Add Products
+                        </a>
+
+                    </div>
+
+                `;
+
+
+                orderTotal.textContent = "0";
+
+                return;
+
+            }
+
+
+            let total = 0;
+
+
+            // DISPLAY PRODUCTS
+
+            cart.forEach(
+                function(item) {
+
+                    let itemTotal =
+                        item.price *
+                        item.quantity;
+
+
+                    total += itemTotal;
+
+
+                    let productDiv =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    productDiv.className =
+                        "order-item";
+
+
+                    productDiv.innerHTML = `
+
+                        <span>
+
+                            <b>
+                                ${item.name}
+                            </b>
+
+                            × ${item.quantity}
+
+                        </span>
+
+
+                        <span>
+
+                            ₱${itemTotal.toLocaleString()}
+
+                        </span>
+
+                    `;
+
+
+                    orderItems.appendChild(
+                        productDiv
+                    );
+
+                }
+            );
+
+
+            // DISPLAY TOTAL
+
+            orderTotal.textContent =
+                total.toLocaleString();
+
+        }
+
+
+
+        // CONFIRM ORDER
+
+        document
+            .getElementById("checkout-form")
+            .addEventListener(
+                "submit",
+                function(event) {
+
+                    event.preventDefault();
+
+
+                    // CHECK CART
+
+                    if (cart.length === 0) {
+
+                        alert(
+                            "Your cart is empty. Please add a product first."
+                        );
+
+                        return;
+
+                    }
+
+
+                    // CUSTOMER INFORMATION
+
+                    const fullname =
+                        document.getElementById(
+                            "fullname"
+                        ).value;
+
+
+                    const address =
+                        document.getElementById(
+                            "address"
+                        ).value;
+
+
+                    const contact =
+                        document.getElementById(
+                            "contact"
+                        ).value;
+
+
+                    const email =
+                        document.getElementById(
+                            "email"
+                        ).value;
+
+
+                    // PAYMENT
+
+                    const selectedPayment =
+                        document.querySelector(
+                            'input[name="pay"]:checked'
+                        );
+
+
+                    if (!selectedPayment) {
+
+                        alert(
+                            "Please select a payment method."
+                        );
+
+                        return;
+
+                    }
+
+
+                    const payment =
+                        selectedPayment.value;
+
+
+                    // CREATE ORDER
+
+                    const order = {
+
+                        customer: {
+
+                            fullname:
+                                fullname,
+
+                            address:
+                                address,
+
+                            contact:
+                                contact,
+
+                            email:
+                                email,
+
+                            payment:
+                                payment
+
+                        },
+
+                        products:
+                            cart,
+
+                        orderDate:
+                            new Date()
+                                .toLocaleString()
+
+                    };
+
+
+                    // SAVE ORDER
+
+                    localStorage.setItem(
+                        "lastOrder",
+                        JSON.stringify(order)
+                    );
+
+
+                    // SHOW CUSTOMER NAME
+
+                    document.getElementById(
+                        "customer-name"
+                    ).textContent =
+                        fullname;
+
+
+                    // HIDE FORM
+
+                    document.getElementById(
+                        "checkout-form"
+                    ).style.display =
+                        "none";
+
+
+                    // SHOW SUCCESS
+
+                    document.getElementById(
+                        "success-message"
+                    ).style.display =
+                        "block";
+
+
+                    // CLEAR CART
+
+                    localStorage.removeItem(
+                        "cart"
+                    );
+
+                    cart = [];
+
+                }
+            );
+
+
+        // LOAD PRODUCTS
+
+        displayOrder();
+
+    </script>
+
+
+</body>
+
+</html>

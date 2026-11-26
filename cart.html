@@ -1,0 +1,654 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>Products — Coffee Vendo</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    
+
+  <header>
+
+    <div class="logo">
+
+      <img
+        src="logo.png.png"
+        alt="logo"
+      >
+
+      Coffee Vendo
+
+    </div>
+
+
+    <nav>
+
+      <a href="home.html">
+        Home
+      </a>
+
+      <a href="cart.html">
+        Products
+      </a>
+
+      <a href="checkout.html">
+        Checkout
+      </a>
+
+      <a href="login.html">
+        Login
+      </a>
+
+    </nav>
+
+
+    <!-- SEARCH -->
+
+    <input
+      type="text"
+      id="searchInput"
+      class="search-bar"
+      placeholder="Search machine..."
+    >
+
+  </header>
+
+
+
+       
+
+  <main>
+
+
+    <h1>
+      Select Your Coffee Vendo Machine
+    </h1>
+
+
+         
+
+    <div class="product-grid">
+
+
+      <!-- PRODUCT 1 -->
+
+      <div class="product-card">
+
+        <img
+          src="vendo.jpeg"
+          alt="ChriptoVendo"
+        >
+
+        <h3>
+          ChriptoVendo
+        </h3>
+
+        <p>
+          An affordable and compact coffee vending machine, perfect for sari-sari stores, small businesses, offices, and other limited spaces. Easy to use, convenient, and a smart choice for starting your own coffee business.
+        </p>
+
+        <p>
+          <b>₱14,500</b>
+        </p>
+
+        <button
+          onclick="addToCart('ChriptoVendo', 14500)"
+          type="button"
+        >
+          Add to Cart
+        </button>
+
+      </div>
+
+
+
+      <!-- PRODUCT 2 -->
+
+      <div class="product-card">
+
+        <img
+          src="coin.jpeg.avif"
+          alt="TophMachine"
+        >
+
+        <h3>
+          TophMachine
+        </h3>
+
+        <p>
+          A smart and stylish coffee vending solution made for schools, public spaces, and high-traffic areas. Designed for convenient self-service, it makes enjoying a quick, delicious cup of coffee easier anytime.
+        </p>
+
+        <p>
+          <b>₱27,000</b>
+        </p>
+
+        <button
+          onclick="addToCart('TophMachine', 27000)"
+          type="button"
+        >
+          Add to Cart
+        </button>
+
+      </div>
+
+
+
+      <!-- PRODUCT 3 -->
+
+      <div class="product-card">
+
+        <img
+          src="companyvendo.jpeg.avif"
+          alt="TowpeeMachine"
+        >
+
+        <h3>
+          TowpeeMachine
+        </h3>
+
+        <p>
+          Power up your business with the TowpeeMachine, a dependable and high-capacity coffee vending machine built for busy locations. Perfect for companies, offices, schools, and large establishments—serving delicious coffee conveniently while helping your business grow.
+        </p>
+
+        <p>
+          <b>₱40,000</b>
+        </p>
+
+        <button
+          onclick="addToCart('TowpeeMachine', 40000)"
+          type="button"
+        >
+          Add to Cart
+        </button>
+
+      </div>
+
+
+
+      <!-- PRODUCT 4 -->
+
+      <div class="product-card">
+
+        <img
+          src="SpaceVendo.jpg"
+          alt="SpaceVendo"
+        >
+
+        <h3>
+          SpaceVendo
+        </h3>
+
+        <p>
+          A powerful, high-capacity coffee vending machine built for busy establishments and high-traffic locations. Designed to serve approximately 500–1,000 cups per day, making it an excellent choice for businesses that need speed, convenience, and reliable coffee service.
+        </p>
+
+        <p>
+          <b>₱60,000</b>
+        </p>
+
+        <button
+          onclick="addToCart('SpaceVendo', 60000)"
+          type="button"
+        >
+          Add to Cart
+        </button>
+
+      </div>
+
+
+    </div>
+
+
+
+
+    <div class="dialog">
+
+      🛒 <b>Your Cart</b>
+
+
+      <div id="cart-items">
+
+      </div>
+
+
+      <hr>
+
+
+      <h3>
+
+        Total: ₱
+
+        <span id="cart-total">
+          0
+        </span>
+
+      </h3>
+
+    </div>
+
+
+
+        
+
+    <div class="cart-buttons">
+
+      <a
+        href="home.html"
+        class="btn"
+      >
+        ← Back to Home
+      </a>
+
+
+      <a
+        href="checkout.html"
+        class="btn"
+      >
+        Proceed to Checkout →
+      </a>
+
+    </div>
+
+
+  </main>
+
+
+
+
+  <footer>
+
+    &copy; 2026 Coffee Vendo —
+    Quality Coffee. 
+  </footer>
+
+
+
+
+  <script>
+
+
+    /* =========================
+       GET SAVED CART
+       ========================= */
+
+    let cart =
+      JSON.parse(
+        localStorage.getItem("cart")
+      ) || [];
+
+
+
+    /* =========================
+       ADD TO CART
+       ========================= */
+
+    function addToCart(name, price) {
+
+
+      /* CHECK IF PRODUCT ALREADY EXISTS */
+
+      let existingProduct =
+        cart.find(
+          product =>
+            product.name === name
+        );
+
+
+      if (existingProduct) {
+
+
+        /* INCREASE QUANTITY */
+
+        existingProduct.quantity += 1;
+
+
+      } else {
+
+
+        /* ADD NEW PRODUCT */
+
+        cart.push({
+
+          name: name,
+
+          price: price,
+
+          quantity: 1
+
+        });
+
+      }
+
+
+      /* SAVE CART */
+
+      localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+      );
+
+
+      /* UPDATE DISPLAY */
+
+      displayCart();
+
+
+      alert(
+        name +
+        " added to cart!"
+      );
+
+    }
+
+
+
+    /* =========================
+       DISPLAY CART
+       ========================= */
+
+    function displayCart() {
+
+
+      const cartItems =
+        document.getElementById(
+          "cart-items"
+        );
+
+
+      const cartTotal =
+        document.getElementById(
+          "cart-total"
+        );
+
+
+      cartItems.innerHTML = "";
+
+
+      let total = 0;
+
+
+
+      /* EMPTY CART */
+
+      if (cart.length === 0) {
+
+
+        cartItems.innerHTML =
+          "<p>Your cart is empty.</p>";
+
+
+        cartTotal.textContent =
+          "0";
+
+
+        return;
+
+      }
+
+
+
+      /* DISPLAY EACH PRODUCT */
+
+      cart.forEach(
+        function(product, index) {
+
+
+          let itemTotal =
+            product.price *
+            product.quantity;
+
+
+          total += itemTotal;
+
+
+
+          let item =
+            document.createElement(
+              "div"
+            );
+
+
+          item.className =
+            "cart-item";
+
+
+          item.innerHTML = `
+
+            <p>
+
+              <b>
+                ${product.name}
+              </b>
+
+              — ₱${product.price.toLocaleString()}
+
+              × ${product.quantity}
+
+              =
+
+              <b>
+                ₱${itemTotal.toLocaleString()}
+              </b>
+
+              <button
+                onclick="removeFromCart(${index})"
+                type="button"
+              >
+                Remove
+              </button>
+
+            </p>
+
+          `;
+
+
+          cartItems.appendChild(
+            item
+          );
+
+        }
+      );
+
+
+
+      /* SHOW TOTAL */
+
+      cartTotal.textContent =
+        total.toLocaleString();
+
+    }
+
+
+
+    /* =========================
+       REMOVE PRODUCT
+       ========================= */
+
+    function removeFromCart(index) {
+
+
+      cart.splice(
+        index,
+        1
+      );
+
+
+      localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+      );
+
+
+      displayCart();
+
+    }
+
+
+
+    /* =========================
+       SEARCH PRODUCTS
+       ========================= */
+
+    function searchProducts() {
+
+
+      const searchInput =
+        document.getElementById(
+          "searchInput"
+        );
+
+
+      const searchText =
+        searchInput.value
+          .trim()
+          .toLowerCase();
+
+
+      const products =
+        document.querySelectorAll(
+          ".product-card"
+        );
+
+
+      /* EMPTY SEARCH */
+
+      if (searchText === "") {
+
+
+        products.forEach(
+          function(product) {
+
+            product.style.display =
+              "";
+
+          }
+        );
+
+
+        return;
+
+      }
+
+
+
+      let found = false;
+
+
+
+      /* SEARCH EACH PRODUCT */
+
+      products.forEach(
+        function(product) {
+
+
+          const productName =
+            product
+              .querySelector("h3")
+              .textContent
+              .toLowerCase();
+
+
+          const productDescription =
+            product
+              .querySelector("p")
+              .textContent
+              .toLowerCase();
+
+
+
+          if (
+            productName.includes(
+              searchText
+            )
+
+            ||
+
+            productDescription.includes(
+              searchText
+            )
+          ) {
+
+
+            product.style.display =
+              "";
+
+
+            found = true;
+
+
+          } else {
+
+
+            product.style.display =
+              "none";
+
+          }
+
+        }
+      );
+
+
+
+      /* NO PRODUCT FOUND */
+
+      if (!found) {
+
+        alert(
+          'No machine found for "' +
+          searchInput.value +
+          '".'
+        );
+
+      }
+
+    }
+
+
+
+    /* =========================
+       ENTER KEY SEARCH
+       ========================= */
+
+    document
+      .getElementById("searchInput")
+      .addEventListener(
+        "keydown",
+        function(event) {
+
+
+          if (
+            event.key === "Enter"
+          ) {
+
+            searchProducts();
+
+          }
+
+        }
+      );
+
+
+
+    /* =========================
+       LOAD CART WHEN PAGE OPENS
+       ========================= */
+
+    displayCart();
+
+
+  </script>
+
+
+</body>
+
+</html>
